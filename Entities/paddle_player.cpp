@@ -19,21 +19,21 @@ void paddle_player::Update()
 {
     switch (this->playerNumber) {
         case 0:
-            this->velocity.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) -
-                               sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W);
+            this->velocity.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) -
+                               sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) * 4;
             break;
         default:
-            this->velocity.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) -
-                               sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
+            this->velocity.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) -
+                               sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) * 4;
             break;
     }
     Entity::Update();
     if (this->getPosition().y < 0)
     {
-        this->move(0, 1.0f);
+        this->move(0, 4);
     }
     if (this->getPosition().y + this->getGlobalBounds().height > 800)
     {
-        this->move(0, -1.0f);
+        this->move(0, -4);
     }
 }

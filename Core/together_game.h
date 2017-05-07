@@ -26,6 +26,9 @@ private:
     Score *score2;
     sf::Font* font;
 
+    sf::Text* pausedText;
+    bool paused, enterKey;
+
 };
 
 

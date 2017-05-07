@@ -8,10 +8,12 @@
 
 class paddle_ai : public paddle {
 public:
-    paddle_ai(int playerNumber);
+    paddle_ai(int playerNumber, int difficulty);
     void setBall(ball *ballObject);
     void Update();
 private:
+    bool ballAway();
+    sf::Vector2f target;
     ball *ballObject;
     int playerNumber;
     float speed;

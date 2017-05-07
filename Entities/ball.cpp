@@ -42,8 +42,8 @@ void ball::Update(sf::RenderWindow *window)
 void ball::Reset(sf::RenderWindow *window)
 {
 
-    this->velocity.x = 1.0f;
-    this->velocity.y = 1.0f;
+    this->velocity.x = ((rand() % 2) == 0) ? 6.5f : -6.5f;
+    this->velocity.y = ((rand() % 2) == 0) ? 6.5f : -6.5f;
     this->setPosition(window->getSize().x / 2, window->getSize().y / 2);
     this->player1->setPosition(0, window->getSize().y / 3 + this->player1->getGlobalBounds().height / 2);
     this->player2->setPosition(window->getSize().x - this->player2->getGlobalBounds().width,
