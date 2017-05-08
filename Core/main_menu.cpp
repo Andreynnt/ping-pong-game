@@ -1,5 +1,4 @@
 #include "main_menu.h"
-#include <memory>
 
 void main_menu::Initialize(sf::RenderWindow *window)
 {

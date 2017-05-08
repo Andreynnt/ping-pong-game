@@ -1,4 +1,3 @@
-#pragma once
 #ifndef PING_PONG_MAIN_MENU_H
 #define PING_PONG_MAIN_MENU_H
 

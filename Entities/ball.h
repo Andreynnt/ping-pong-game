@@ -1,12 +1,9 @@
 
-#pragma once
+#ifndef PING_PONG_BALL_H
+#define PING_PONG_BALL_H
 #include <SFML/Audio.hpp>
 #include "paddle_player.h"
 #include "score.h"
-
-#ifndef PING_PONG_BALL_H
-#define PING_PONG_BALL_H
-
 
 class ball : public Entity
 {

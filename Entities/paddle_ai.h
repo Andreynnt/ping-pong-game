@@ -1,10 +1,8 @@
-#pragma once
-#include "ball.h"
-#include "paddle.h"
-
 #ifndef PING_PONG_PADDLE_AI_H
 #define PING_PONG_PADDLE_AI_H
 
+#include "ball.h"
+#include "paddle.h"
 
 class paddle_ai : public paddle {
 public:

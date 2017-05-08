@@ -14,7 +14,7 @@ void main_game::Initialize(sf::RenderWindow *window)
     this->pausedText->setPosition(window->getSize().x / 2, window->getSize().y / 2);
 
     this->player1 = new paddle_player(0);
-    this->player2 = new paddle_ai(1, 3);
+    this->player2 = new paddle_ai(1, 1);
     this->ballObject = new ball(this->score1, this->score2, this->player1, this->player2);
     this->player2->setBall(this->ballObject);
 

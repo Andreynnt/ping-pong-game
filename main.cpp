@@ -9,7 +9,6 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Ping!");
     game_state& coreState = game_state::instance();
     coreState.SetWindow(&window);
-
     std::shared_ptr<main_menu> menu(new main_menu());
     coreState.SetState(menu);
 

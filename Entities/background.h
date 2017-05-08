@@ -1,8 +1,7 @@
-#include "entity.h"
-
 #ifndef PING_PONG_BACKGROUND_H
 #define PING_PONG_BACKGROUND_H
 
+#include "entity.h"
 
 class background : public Entity{
 public:

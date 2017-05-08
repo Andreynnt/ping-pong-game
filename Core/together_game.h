@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PING_PONG_TOGETHER_GAME_H
+#define PING_PONG_TOGETHER_GAME_H
+
 #include "main_menu.h"
 #include "game_state.h"
 #include "../Entities/entity.h"
@@ -8,8 +10,6 @@
 #include "../Entities/paddle_ai.h"
 #include "../Entities/background.h"
 
-#ifndef PING_PONG_TOGETHER_GAME_H
-#define PING_PONG_TOGETHER_GAME_H
 
 class together_game : public tiny_state{
 public:

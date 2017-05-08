@@ -1,9 +1,9 @@
-#pragma once
+#ifndef PING_PONG_ENTITY_H
+#define PING_PONG_ENTITY_H
+
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#ifndef PING_PONG_ENTITY_H
-#define PING_PONG_ENTITY_H
 
 class Entity : public sf::Sprite
 {
@@ -31,15 +31,10 @@ public:
         }
     }
 
-    sf::Vector2f get_velocity(){
-        return this->velocity;
-    }
-
     ~Entity()
     {
         delete this->texture;
     }
-protected:
     sf::Vector2f velocity;
 private:
     sf::Texture* texture;

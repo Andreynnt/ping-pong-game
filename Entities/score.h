@@ -1,8 +1,6 @@
-#pragma once
-#include <SFML/Graphics.hpp>
-
 #ifndef PING_PONG_SCORE_H
 #define PING_PONG_SCORE_H
+#include <SFML/Graphics.hpp>
 
 class Score : public sf::Text {
 public:

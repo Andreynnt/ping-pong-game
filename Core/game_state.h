@@ -1,9 +1,10 @@
+
+#ifndef PING_PONG_GAME_STATE_H
+#define PING_PONG_GAME_STATE_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
 
-#ifndef PING_PONG_GAME_STATE_H
-#define PING_PONG_GAME_STATE_H
 extern bool quitGame;
 
 class tiny_state {

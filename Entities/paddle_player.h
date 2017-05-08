@@ -1,8 +1,8 @@
-#pragma once
-#include "paddle.h"
 #ifndef PING_PONG_PADDLE_PLAYER_H
 #define PING_PONG_PADDLE_PLAYER_H
 
+#include "paddle.h"
+#define PADDLE_SPEED 5
 
 class paddle_player : public paddle
 {
