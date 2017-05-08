@@ -30,7 +30,9 @@ void main_game::Update(sf::RenderWindow *window) {
             this->paused = false;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
-            coreState.SetState(new main_menu());
+            game_state& coreState = game_state::instance();
+            std::shared_ptr<main_menu> menu(new main_menu());
+            coreState.SetState(menu);
         }
     }else {
         this->ballObject->Update(window);

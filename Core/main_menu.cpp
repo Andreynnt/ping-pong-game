@@ -1,4 +1,5 @@
 #include "main_menu.h"
+#include <memory>
 
 void main_menu::Initialize(sf::RenderWindow *window)
 {
@@ -50,16 +51,20 @@ void main_menu::Update(sf::RenderWindow *window)
         this->selected = 2;
     }
 
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return))
     {
+        game_state& coreState = game_state::instance();
         switch (this->selected)
         {
-            case 0:
-                coreState.SetState(new main_game());
+            case 0:{
+                std::shared_ptr<main_game> main(new main_game());
+                coreState.SetState(main);
+            }
                 break;
-            case 1:
-                coreState.SetState(new together_game());
+            case 1:{
+                std::shared_ptr<together_game> together(new together_game());
+                coreState.SetState(together);
+            }
                 break;
             case 2:
                 quitGame = true;
@@ -69,16 +74,6 @@ void main_menu::Update(sf::RenderWindow *window)
 
     this->upKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up);
     this->downKey = sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down);
-
-    if (paused)
-    {
-        // normal game
-        paused = true;
-    }
-    else
-    {
-        //paused game
-    }
 }
 
 void main_menu::Render(sf::RenderWindow *window)
