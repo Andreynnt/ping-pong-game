@@ -1,4 +1,5 @@
 #include "paddle_player.h"
+#include <iostream>
 
 paddle_player::paddle_player(int playerNumber)
 {
@@ -6,10 +7,10 @@ paddle_player::paddle_player(int playerNumber)
     switch (this->playerNumber)
     {
         case 0:
-            this->Load("../Graphics/Sprites/paddle1.png");
+            this->Load("../Graphics/Sprites/paddle4.png");
             break;
         default:
-            this->Load("../Graphics/Sprites/paddle2.png");
+            this->Load("../Graphics/Sprites/paddle41.png");
             break;
     }
 }
@@ -26,13 +27,14 @@ void paddle_player::Update()
                                sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) * PADDLE_SPEED;
             break;
     }
-    Entity::Update();
-    if (this->getPosition().y < 0)
-    {
+
+        Entity::Update();
+
+    if (this->getPosition().y < 0) {
         this->move(0, PADDLE_SPEED);
     }
-    if (this->getPosition().y + this->getGlobalBounds().height > 800)
-    {
+    if (this->getPosition().y + this->getGlobalBounds().height > 800) {
         this->move(0, -PADDLE_SPEED);
     }
+
 }

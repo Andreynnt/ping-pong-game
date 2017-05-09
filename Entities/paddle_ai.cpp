@@ -1,22 +1,21 @@
 #include "paddle_ai.h"
 
-
 paddle_ai::paddle_ai(int playerNumber, int difficulty)
 {
     this->playerNumber = playerNumber;
     this->ballObject = ballObject;
     switch(difficulty){
         case 1:
-            this->speed = 1.20f * PADDLE_SPEED;
+            this->speed = 1.00f * PADDLE_SPEED;
             break;
         case 2:
-            this->speed = 1.50f * PADDLE_SPEED;
+            this->speed = 1.20f * PADDLE_SPEED;
             break;
         default:
-            this->speed = 1.70f * PADDLE_SPEED;
+            this->speed = 1.43f * PADDLE_SPEED;
             break;
     }
-    this->Load("../Graphics/Sprites/paddle2.png");
+    this->Load("../Graphics/Sprites/paddle41.png");
 
 
 }
@@ -26,14 +25,19 @@ void paddle_ai::setBall(ball *ballObject)
     this->ballObject = ballObject;
 }
 
-bool paddle_ai::ballAway()
-{
-    if (this->playerNumber == 0)
-    {
+bool paddle_ai::ballAway() {
+    if (this->playerNumber == 0) {
         return this->ballObject->velocity.x > 0;
     }
     return this->ballObject->velocity.x < 0;
 }
+
+void paddle_ai::SelectTarget(){
+    if (this->ballObject->GoingToCeil() || this->ballObject->GoingToFloar()) {
+        this->target.y = rand() % 800;
+    }
+}
+
 
 void paddle_ai::Update() {
     if (this->ballObject) {
@@ -41,26 +45,29 @@ void paddle_ai::Update() {
         if (this->ballAway()) {
             if (target.x < 0) {
                 target.x = 1;
-                target.y = rand() % 800;
+                this->SelectTarget();
             }
-            float temp = ((this->getPosition().y + this->getGlobalBounds().height / 2) - this->target.y - 10);
-            if (temp < -5.0f) {
+            float temp = ((this->getPosition().y + this->getGlobalBounds().height / 2) - this->target.y);
+            if (temp < -AI_BALL_BOUNDS) {
                 this->velocity.y = this->speed;
             }
-            if (temp > 5.0f) {
+            else if (temp > AI_BALL_BOUNDS) {
                 this->velocity.y = -this->speed;
+            } else{
+                this->velocity.y = 0;
             }
         } else {
             target = sf::Vector2f(-1, 0);
             float temp = ((this->getPosition().y + this->getGlobalBounds().height / 2) - this->ballObject->getPosition().y);
-            if (temp < -5.0f) {
+            if (temp < -AI_BALL_BOUNDS) {
                 this->velocity.y = this->speed;
             }
-            if (temp > 5.0f) {
+            else if (temp > AI_BALL_BOUNDS) {
                 this->velocity.y = -this->speed;
+            } else{
+                this->velocity.y = 0;
             }
         }
-
     }
 
     Entity::Update();

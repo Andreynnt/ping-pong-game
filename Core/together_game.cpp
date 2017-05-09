@@ -3,7 +3,7 @@
 
 void together_game::Initialize(sf::RenderWindow *window)
 {
-    this->back = new background("../Graphics/wood.jpg");
+    this->back = new background("../Graphics/cosmos.jpg");
     this->font = new sf::Font();
     this->font->loadFromFile("../Graphics/font1.otf");
 

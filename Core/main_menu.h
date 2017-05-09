@@ -21,8 +21,11 @@ private:
     sf::Text *quit;
     background *back;
     int selected;
-    bool paused;
-    bool upKey, downKey;
+    float scale;
+    float scaleInc;
+    float scaleSpeed;
+    int mode;
+    bool upKey, downKey, leftKey, rightKey;
 };
 
 #endif //PING_PONG_MAIN_MENU_H

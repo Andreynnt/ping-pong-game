@@ -10,6 +10,11 @@ class ball : public Entity
 public:
     ball(Score* score1, Score* score2, paddle *player1,  paddle *player2);
     void Update(sf::RenderWindow *window);
+
+    bool GoingToCeil();
+    bool GoingToFloar();
+
+    void AddVelocity(paddle* paddle);
     void Reset(sf::RenderWindow* window);
     ~ball();
 private:
@@ -19,6 +24,10 @@ private:
     paddle *player2;
     sf::SoundBuffer *buffer;
     sf::Sound *sound;
+
+    bool timerRestart;
+    sf::Clock delayTimer;
+    sf::Time delayElapsed;
 };
 
 

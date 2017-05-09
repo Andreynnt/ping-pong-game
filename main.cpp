@@ -1,4 +1,5 @@
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include "Core/game_state.h"
 #include "Core/main_menu.h"
 
@@ -6,7 +7,7 @@
 bool quitGame = false;
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1200, 800), "Ping!");
+    sf::RenderWindow window(sf::VideoMode(1200, 800), "P!ng");
     game_state& coreState = game_state::instance();
     coreState.SetWindow(&window);
     std::shared_ptr<main_menu> menu(new main_menu());
@@ -14,6 +15,12 @@ int main() {
 
     sf::Clock timer;
     sf::Time elapsed;
+
+    sf::SoundBuffer musicBuffer;
+    musicBuffer.loadFromFile("../Sounds/trust_MkPKkUHd.wav");
+    sf::Sound music(musicBuffer);
+    music.setLoop(true);
+    music.play();
 
     while (window.isOpen()){
         sf::Event event;
@@ -35,5 +42,6 @@ int main() {
             timer.restart();
         }
     }
+    music.stop();
     return 0;
 }
