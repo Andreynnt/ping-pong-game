@@ -10,7 +10,6 @@
 #include "../Entities/paddle_ai.h"
 #include "../Entities/background.h"
 
-
 class together_game : public tiny_state{
 public:
     void Initialize(sf::RenderWindow *window);
@@ -25,9 +24,13 @@ private:
     Score *score1;
     Score *score2;
     sf::Font* font;
-
+    sf::Font* pausedFont;
+    sf::Font* scoreFont;
     sf::Text* pausedText;
     bool paused, enterKey;
+    sf::Clock startTimer;
+    sf::Time startElapsed;
+    sf::Text* startDigits;
 
 };
 

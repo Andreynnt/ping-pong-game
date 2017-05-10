@@ -6,8 +6,7 @@
 #include "game_state.h"
 #include "../Entities/background.h"
 
-class main_menu : public tiny_state
-{
+class main_menu : public tiny_state {
 public:
     void Initialize(sf::RenderWindow *window);
     void Update(sf::RenderWindow *window);
@@ -23,7 +22,6 @@ private:
     int selected;
     float scale;
     float scaleInc;
-    float scaleSpeed;
     int mode;
     bool upKey, downKey, leftKey, rightKey;
 };

@@ -1,12 +1,11 @@
 #include "paddle_ai.h"
 
-paddle_ai::paddle_ai(int playerNumber, int difficulty)
-{
+paddle_ai::paddle_ai(int playerNumber, int difficulty) {
     this->playerNumber = playerNumber;
     this->ballObject = ballObject;
     switch(difficulty){
         case 1:
-            this->speed = 1.00f * PADDLE_SPEED;
+            this->speed = 1.05f * PADDLE_SPEED;
             break;
         case 2:
             this->speed = 1.20f * PADDLE_SPEED;
@@ -15,13 +14,10 @@ paddle_ai::paddle_ai(int playerNumber, int difficulty)
             this->speed = 1.43f * PADDLE_SPEED;
             break;
     }
-    this->Load("../Graphics/Sprites/paddle41.png");
-
-
+    this->Load("../Graphics/Sprites/paddle52.png");
 }
 
-void paddle_ai::setBall(ball *ballObject)
-{
+void paddle_ai::setBall(ball *ballObject) {
     this->ballObject = ballObject;
 }
 
@@ -41,7 +37,6 @@ void paddle_ai::SelectTarget(){
 
 void paddle_ai::Update() {
     if (this->ballObject) {
-
         if (this->ballAway()) {
             if (target.x < 0) {
                 target.x = 1;
@@ -71,12 +66,10 @@ void paddle_ai::Update() {
     }
 
     Entity::Update();
-    if (this->getPosition().y < 0)
-    {
+    if (this->getPosition().y < 0) {
         this->move(0, this->speed);
     }
-    if (this->getPosition().y + this->getGlobalBounds().height > 800)
-    {
+    if (this->getPosition().y + this->getGlobalBounds().height > 800) {
         this->move(0, -this->speed);
     }
 }

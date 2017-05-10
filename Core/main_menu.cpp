@@ -4,28 +4,30 @@ void main_menu::Initialize(sf::RenderWindow *window) {
     this->mode = 0;
     this->selected = 0;
     this->scale = 1;
-    this->scaleInc = 0.01f;
+    this->scaleInc = 0.004f;
 
     this->back = new background("../Graphics/cosmos.jpg");
     this->font = new sf::Font();
-    this->font->loadFromFile("../Graphics/font1.otf");
+    this->font->loadFromFile("../Graphics/OuterspaceMilitia.otf");
 
-    this->title = new sf::Text("P!ng", *this->font, 256U);
-    this->title->setFillColor(sf::Color::White);
+    this->title = new sf::Text("Ping", *this->font, 240U);
+    //this->title->setFillColor(sf::Color(211, 14, 204));
     this->title->setOrigin(this->title->getGlobalBounds().width / 2 , this->title->getGlobalBounds().height / 2 );
-    this->title->setPosition(window->getSize().x / 2, window->getSize().y / 8);
+    this->title->setPosition(window->getSize().x / 2, window->getSize().y / 6);
 
-    this->play_solo = new sf::Text("Easy", *this->font, 128U);
+    this->play_solo = new sf::Text("Easy", *this->font, 60U);
     this->play_solo->setOrigin(this->play_solo->getGlobalBounds().width / 2 , this->play_solo->getGlobalBounds().height / 2 );
-    this->play_solo->setPosition(window->getSize().x / 2, window->getSize().y / 2);
+    this->play_solo->setPosition(window->getSize().x / 2, window->getSize().y / 2 + window->getSize().y / 7);
 
-    this->play_together = new sf::Text("Play VS", *this->font, 128U);
+    this->play_together = new sf::Text("Play VS", *this->font, 60U);
     this->play_together->setOrigin(this->play_together->getGlobalBounds().width / 2 , this->play_together->getGlobalBounds().height / 2 );
-    this->play_together->setPosition(window->getSize().x / 2, window->getSize().y / 2 + this->play_solo->getGlobalBounds().height);
+    this->play_together->setPosition(window->getSize().x / 2, window->getSize().y / 2 + window->getSize().y / 7 +
+            this->play_solo->getGlobalBounds().height + 20);
 
-    this->quit = new sf::Text("Quit", *this->font, 128U);
+    this->quit = new sf::Text("Quit", *this->font, 60U);
     this->quit->setOrigin(this->quit->getGlobalBounds().width / 2 , this->quit->getGlobalBounds().height / 2 );
-    this->quit->setPosition(window->getSize().x / 2, window->getSize().y / 2 + 2 * this->play_solo->getGlobalBounds().height);
+    this->quit->setPosition(window->getSize().x / 2, window->getSize().y / 2 + + window->getSize().y / 7 +
+            2 * this->play_solo->getGlobalBounds().height + 45);
 
 }
 
@@ -92,7 +94,6 @@ void main_menu::Update(sf::RenderWindow *window) {
         this->scaleInc *= -1;
     }
 
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Return)) {
         game_state& coreState = game_state::instance();
         switch (this->selected) {
@@ -120,20 +121,23 @@ void main_menu::Update(sf::RenderWindow *window) {
 
 void main_menu::Render(sf::RenderWindow *window) {
     window->draw(*this->back);
-
     this->play_solo->setFillColor(sf::Color::White);
     this->play_together->setFillColor(sf::Color::White);
     this->quit->setFillColor(sf::Color::White);
     switch(this->selected)
     {
         case 0:
-            this->play_solo->setFillColor(sf::Color(93,236,203));
+            if (this->mode == 0 || this->mode == 1) {
+                this->play_solo->setFillColor(sf::Color(211, 14, 204));
+            }else{
+                this->play_solo->setFillColor(sf::Color(237, 28, 28));
+            }
             break;
         case 1:
-            this->play_together->setFillColor(sf::Color(93,236,203));
+            this->play_together->setFillColor(sf::Color(211, 14, 204));
             break;
-        case 2:
-            this->quit->setFillColor(sf::Color(93,236,203));
+        default:
+            this->quit->setFillColor(sf::Color(211, 14, 204));
             break;
     }
 

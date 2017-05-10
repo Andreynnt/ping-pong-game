@@ -8,7 +8,6 @@ public:
     void IncrementScore();
     void Update();
 private:
-    sf::Font *font;
     int value;
 };
 

@@ -1,22 +1,18 @@
 #include "paddle_player.h"
-#include <iostream>
 
-paddle_player::paddle_player(int playerNumber)
-{
+paddle_player::paddle_player(int playerNumber) {
     this->playerNumber = playerNumber;
-    switch (this->playerNumber)
-    {
+    switch (this->playerNumber) {
         case 0:
-            this->Load("../Graphics/Sprites/paddle4.png");
+            this->Load("../Graphics/Sprites/paddle51.png");
             break;
         default:
-            this->Load("../Graphics/Sprites/paddle41.png");
+            this->Load("../Graphics/Sprites/paddle52.png");
             break;
     }
 }
 
-void paddle_player::Update()
-{
+void paddle_player::Update() {
     switch (this->playerNumber) {
         case 0:
             this->velocity.y = (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) -
@@ -27,7 +23,6 @@ void paddle_player::Update()
                                sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) * PADDLE_SPEED;
             break;
     }
-
         Entity::Update();
 
     if (this->getPosition().y < 0) {
@@ -36,5 +31,4 @@ void paddle_player::Update()
     if (this->getPosition().y + this->getGlobalBounds().height > 800) {
         this->move(0, -PADDLE_SPEED);
     }
-
 }

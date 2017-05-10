@@ -49,7 +49,6 @@ public:
 private:
     game_state(game_state const&) = delete;
     game_state& operator= (game_state const&) = delete;
-
     game_state() {
         this->state = NULL;
     }

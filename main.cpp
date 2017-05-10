@@ -21,6 +21,7 @@ int main() {
     sf::Sound music(musicBuffer);
     music.setLoop(true);
     music.play();
+    music.setVolume(30);
 
     while (window.isOpen()){
         sf::Event event;
@@ -28,7 +29,6 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
         elapsed = timer.getElapsedTime();
         if (elapsed.asMicroseconds() > 16666)
         {

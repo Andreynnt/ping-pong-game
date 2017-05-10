@@ -4,35 +4,27 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-
-class Entity : public sf::Sprite
-{
+class Entity : public sf::Sprite {
 public:
-    Entity()
-    {
+    Entity() {
         this->texture = new sf::Texture();
     }
 
-    void Load(std::string filename)
-    {
+    void Load(std::string filename) {
         this->texture->loadFromFile(filename);
         this->setTexture(*this->texture);
     }
 
-    virtual void Update()
-    {
+    virtual void Update() {
         this->move(this->velocity);
     }
 
-    bool CheckCollision(Entity *entity)
-    {
+    bool CheckCollision(Entity *entity) {
         if (this->getGlobalBounds().intersects(entity->getGlobalBounds())){
-
         }
     }
 
-    ~Entity()
-    {
+    ~Entity() {
         delete this->texture;
     }
     sf::Vector2f velocity;
