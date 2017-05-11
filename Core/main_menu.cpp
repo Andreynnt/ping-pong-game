@@ -11,7 +11,6 @@ void main_menu::Initialize(sf::RenderWindow *window) {
     this->font->loadFromFile("../Graphics/OuterspaceMilitia.otf");
 
     this->title = new sf::Text("Ping", *this->font, 240U);
-    //this->title->setFillColor(sf::Color(211, 14, 204));
     this->title->setOrigin(this->title->getGlobalBounds().width / 2 , this->title->getGlobalBounds().height / 2 );
     this->title->setPosition(window->getSize().x / 2, window->getSize().y / 6);
 
@@ -28,8 +27,25 @@ void main_menu::Initialize(sf::RenderWindow *window) {
     this->quit->setOrigin(this->quit->getGlobalBounds().width / 2 , this->quit->getGlobalBounds().height / 2 );
     this->quit->setPosition(window->getSize().x / 2, window->getSize().y / 2 + + window->getSize().y / 7 +
             2 * this->play_solo->getGlobalBounds().height + 45);
-
 }
+
+
+void main_menu::UpdateMode(sf::RenderWindow *window) {
+    switch(mode){
+        case 0:
+            this->play_solo->setString("Easy");
+            break;
+        case 1:
+            this->play_solo->setString("Norm");
+            break;
+        default:
+            this->play_solo->setString("Hard");
+            break;
+    }
+    this->play_solo->setOrigin(this->play_solo->getGlobalBounds().width / 2 , this->play_solo->getGlobalBounds().height / 2 );
+    this->play_solo->setPosition(window->getSize().x / 2, window->getSize().y / 2 + window->getSize().y / 7);
+}
+
 
 void main_menu::Update(sf::RenderWindow *window) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && !this->upKey) {
@@ -48,29 +64,22 @@ void main_menu::Update(sf::RenderWindow *window) {
     if (this->selected == 0){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && !this->leftKey) {
             this->mode -= 1;
+            this->UpdateMode(window);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && !this->rightKey) {
             this->mode += 1;
+            this->UpdateMode(window);
         }
     }
     if (this->mode > 2) {
         this->mode = 0;
+        this->UpdateMode(window);
     }
     if (this->mode < 0) {
         this->mode = 2;
+        this->UpdateMode(window);
     }
 
-    switch(mode){
-        case 0:
-            this->play_solo->setString("Easy");
-            break;
-        case 1:
-            this->play_solo->setString("Norm");
-            break;
-        case 2:
-            this->play_solo->setString("Hard");
-            break;
-    }
 
     this->play_solo->setScale(1, 1);
     this->play_together->setScale(1, 1);
@@ -83,7 +92,7 @@ void main_menu::Update(sf::RenderWindow *window) {
         case 1:
             this->play_together->setScale(this->scale, this->scale);
             break;
-        case 2:
+        default:
             this->quit->setScale(this->scale, this->scale);
             break;
     }
@@ -100,14 +109,15 @@ void main_menu::Update(sf::RenderWindow *window) {
             case 0:{
                 std::shared_ptr<main_game> main(new main_game(this->mode));
                 coreState.SetState(main);
-            }
                 break;
+            }
+
             case 1:{
                 std::shared_ptr<together_game> together(new together_game());
                 coreState.SetState(together);
-            }
                 break;
-            case 2:
+            }
+            default:
                 quitGame = true;
                 break;
         }
@@ -124,20 +134,19 @@ void main_menu::Render(sf::RenderWindow *window) {
     this->play_solo->setFillColor(sf::Color::White);
     this->play_together->setFillColor(sf::Color::White);
     this->quit->setFillColor(sf::Color::White);
-    switch(this->selected)
-    {
+    switch(this->selected) {
         case 0:
             if (this->mode == 0 || this->mode == 1) {
-                this->play_solo->setFillColor(sf::Color(211, 14, 204));
+                this->play_solo->setFillColor(sf::Color(246, 55, 202));
             }else{
-                this->play_solo->setFillColor(sf::Color(237, 28, 28));
+                this->play_solo->setFillColor(sf::Color(255, 10, 10));
             }
             break;
         case 1:
-            this->play_together->setFillColor(sf::Color(211, 14, 204));
+            this->play_together->setFillColor(sf::Color(246, 55, 202));
             break;
         default:
-            this->quit->setFillColor(sf::Color(211, 14, 204));
+            this->quit->setFillColor(sf::Color(246, 55, 202));
             break;
     }
 

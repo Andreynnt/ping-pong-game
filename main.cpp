@@ -3,7 +3,6 @@
 #include "Core/game_state.h"
 #include "Core/main_menu.h"
 
-
 bool quitGame = false;
 
 int main() {
@@ -30,8 +29,7 @@ int main() {
                 window.close();
         }
         elapsed = timer.getElapsedTime();
-        if (elapsed.asMicroseconds() > 16666)
-        {
+        if (elapsed.asMicroseconds() > 16666) {
             window.clear(sf::Color::Cyan);
             coreState.Update();
             coreState.Render();

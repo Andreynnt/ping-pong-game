@@ -24,6 +24,7 @@ private:
     float scaleInc;
     int mode;
     bool upKey, downKey, leftKey, rightKey;
+    void UpdateMode(sf::RenderWindow *window);
 };
 
 #endif //PING_PONG_MAIN_MENU_H

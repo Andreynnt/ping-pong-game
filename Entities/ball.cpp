@@ -10,6 +10,11 @@ ball::ball(Score* score1, Score* score2, paddle *player1,  paddle *player2) {
     this->buffer = new sf::SoundBuffer();
     this->buffer->loadFromFile("../Sounds/bounce.wav");
     this->sound = new sf::Sound(*this->buffer);
+
+    this->score_buffer = new sf::SoundBuffer();
+    this->score_buffer->loadFromFile("../Sounds/glass.wav");
+    this->score_sound = new sf::Sound(*this->score_buffer);
+    this->score_sound->setVolume(50);
 }
 
 void ball::AddVelocity(paddle* paddle){
@@ -69,10 +74,12 @@ void ball::Update(sf::RenderWindow *window) {
         this->sound->play();
     }
     if (this->getPosition().x <  this->player1->getGlobalBounds().width - 5) {
+        this->score_sound->play();
         this->score2->IncrementScore();
         this->Reset(window);
     }
     if (this->getPosition().x  > window->getSize().x - this->player2->getGlobalBounds().width + 5) {
+        this->score_sound->play();
         this->score1->IncrementScore();
         this->Reset(window);
     }
@@ -86,6 +93,8 @@ void ball::Reset(sf::RenderWindow *window) {
 }
 
 ball::~ball() {
+    delete(this->score_sound);
+    delete(this->score_buffer);
     delete(this->buffer);
     delete(this->sound);
 }

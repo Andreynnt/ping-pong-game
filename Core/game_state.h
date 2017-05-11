@@ -5,7 +5,6 @@
 #include <iostream>
 #include <memory>
 
-extern bool quitGame;
 
 class tiny_state {
 public:
@@ -61,6 +60,6 @@ private:
     std::shared_ptr<tiny_state> state;
 };
 
-
+extern bool quitGame;
 
 #endif //PING_PONG_GAME_STATE_H

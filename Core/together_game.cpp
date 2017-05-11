@@ -96,8 +96,8 @@ void together_game::Destroy(sf::RenderWindow *window) {
     delete this->score1;
     delete this->score2;
     delete this->font;
-    delete  this->pausedFont;
-    delete  this->scoreFont;
+    delete this->pausedFont;
+    delete this->scoreFont;
     delete this->pausedText;
     delete this->startDigits;
 }

@@ -31,10 +31,12 @@ private:
     sf::Font* pausedFont;
     sf::Font* scoreFont;
     sf::Text* pausedText;
-    bool paused, enterKey, escKey;
+    bool paused, enterKey;
     sf::Clock startTimer;
     sf::Time startElapsed;
     sf::Text* startDigits;
+
+
 };
 
 

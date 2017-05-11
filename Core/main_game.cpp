@@ -53,7 +53,6 @@ void main_game::Initialize(sf::RenderWindow *window) {
 
     this->paused = false;
     this->enterKey = false;
-    this->escKey = false;
 }
 
 void main_game::Update(sf::RenderWindow *window) {

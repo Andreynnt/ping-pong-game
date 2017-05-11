@@ -23,6 +23,9 @@ private:
     paddle *player2;
     sf::SoundBuffer *buffer;
     sf::Sound *sound;
+
+    sf::SoundBuffer *score_buffer;
+    sf::Sound *score_sound;
 };
 
 
