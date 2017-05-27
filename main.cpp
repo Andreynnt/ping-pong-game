@@ -22,19 +22,18 @@ int main() {
     music.play();
     music.setVolume(30);
 
-    while (window.isOpen()){
+    while (window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event)){
+        while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
         elapsed = timer.getElapsedTime();
         if (elapsed.asMicroseconds() > 16666) {
-            window.clear(sf::Color::Cyan);
             coreState.Update();
             coreState.Render();
             window.display();
-            if (quitGame){
+            if (quitGame) {
                 window.close();
             }
             timer.restart();
